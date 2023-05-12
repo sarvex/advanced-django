@@ -12,4 +12,4 @@ class ProfilePage(models.Model):
     user_account = models.ForeignKey(UserAccount, null=True, blank=False, on_delete=CASCADE)
 
     def __str__(self):
-        return '{}'.format(self.user_account.first_name)
+        return f'{self.user_account.first_name}'

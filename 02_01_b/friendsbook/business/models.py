@@ -12,7 +12,7 @@ class Business(models.Model):
     created_on = models.DateTimeField('date created', auto_now_add=True)
     
     def __str__(self):
-        return self.name[0:100]
+        return self.name[:100]
 
     @property
     def birthday(self):

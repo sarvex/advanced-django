@@ -14,7 +14,7 @@ class Business(models.Model):
     profile_photo = models.ImageField(upload_to='profile_photos', null=True)
     
     def __str__(self):
-        return self.name[0:100]
+        return self.name[:100]
 
     @property
     def birthday(self):

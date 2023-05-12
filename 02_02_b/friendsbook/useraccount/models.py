@@ -6,9 +6,7 @@ from django.core.exceptions import ValidationError
 
 # C0FFEE -> 12648430
 def hex_to_int(value):
-    if value is None:
-        return None
-    return int(value, 16)
+    return None if value is None else int(value, 16)
 
 # 12648430 -> C0FFEE
 def int_to_hex(value):
@@ -35,7 +33,7 @@ class UserAccount(models.Model):
     about = models.TextField(null=True)
 
     def name(self):
-        return '{} {}'.format(self.first_name, self.last_name)
+        return f'{self.first_name} {self.last_name}'
 
     def __str__(self):
-        return '{} {}'.format(self.first_name, self.last_name)
+        return f'{self.first_name} {self.last_name}'

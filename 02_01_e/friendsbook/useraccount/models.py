@@ -12,7 +12,7 @@ class UserAccount(models.Model):
     about = models.TextField(null=True)
 
     def name(self):
-        return '{} {}'.format(self.first_name, self.last_name)
+        return f'{self.first_name} {self.last_name}'
 
     def __str__(self):
-        return '{} {}'.format(self.first_name, self.last_name)
+        return f'{self.first_name} {self.last_name}'

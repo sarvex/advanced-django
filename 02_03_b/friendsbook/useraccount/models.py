@@ -6,9 +6,7 @@ from django.core.exceptions import ValidationError
 
 # C0FFEE -> 12648430
 def hex_to_int(value):
-    if value is None:
-        return None
-    return int(value, 16)
+    return None if value is None else int(value, 16)
 
 # 12648430 -> C0FFEE
 def int_to_hex(value):
@@ -30,15 +28,13 @@ class RGBcolorField(models.CharField):
         try:
             hex_to_int(value)
         except: 
-            raise ValidationError('{} is not a hex value'.format(value))
+            raise ValidationError(f'{value} is not a hex value')
 
     def db_type(self, connection):
         return 'UNSIGNED INTEGER(3)'
 
     def from_db_value(self, value, expression, connection):
-        if value is None:
-            return None 
-        return int_to_hex(value)
+        return None if value is None else int_to_hex(value)
     
     def get_prep_value(self, value):
         return hex_to_int(value)
@@ -55,7 +51,7 @@ class UserAccount(models.Model):
     about = models.TextField(null=True)
 
     def name(self):
-        return '{} {}'.format(self.first_name, self.last_name)
+        return f'{self.first_name} {self.last_name}'
 
     def __str__(self):
-        return '{} {}'.format(self.first_name, self.last_name)
+        return f'{self.first_name} {self.last_name}'

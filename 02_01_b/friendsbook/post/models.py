@@ -9,4 +9,4 @@ class Post(models.Model):
     created_on = models.DateTimeField('date created', auto_now_add=True)
 
     def __str__(self):
-        return '{}: {}'.format(self.author, self.content[0:20])
+        return f'{self.author}: {self.content[:20]}'

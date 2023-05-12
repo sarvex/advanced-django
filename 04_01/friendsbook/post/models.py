@@ -6,7 +6,7 @@ from django.core.exceptions import ValidationError
 
 BAD_WORDS = ['java', 'waterfall', 'enterprise']
 def validate_no_bad_words(content):
-    if any([word in content.lower() for word in BAD_WORDS]):
+    if any(word in content.lower() for word in BAD_WORDS):
         raise ValidationError('This post contains bad words!')
 
 
@@ -16,7 +16,7 @@ class Post(models.Model):
     created_on = models.DateTimeField('date created', auto_now_add=True)
 
     def __str__(self):
-        return '{}: {}'.format(self.author, self.content[0:20])
+        return f'{self.author}: {self.content[:20]}'
 
 
 class Comment(models.Model):
@@ -26,4 +26,4 @@ class Comment(models.Model):
     created_on = models.DateTimeField('date created', auto_now_add=True)
 
     def __str__(self):
-        return '{}: {}'.format(self.author, self.content[0:20])
+        return f'{self.author}: {self.content[:20]}'
